@@ -39,7 +39,7 @@ const Check = (props) => {
   }
 
   const checked = (check) => {
-
+    props.checked({check, indice: props.indice})
   }
 
 
@@ -48,7 +48,7 @@ const Check = (props) => {
 
       <div className="name">
 
-        <label><input type="checkbox" name={props.label} onChange={(e) => checked(e.target.checked)}/> {props.label}</label>
+        <label><input checked={props.label.checked} type="checkbox" name={props.label.name} onChange={(e) => checked(e.target.checked)}/> {props.label.name}</label>
 
       </div>
 
@@ -69,7 +69,7 @@ const Check = (props) => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <Formulary modal={true} onSubmit={edit} cancel={handleClose} text={props.label}/>
+            <Formulary modal={true} onSubmit={edit} cancel={handleClose} text={props.label.name}/>
           </div>
         </Fade>
       </Modal>

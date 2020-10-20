@@ -28,18 +28,29 @@ export default function ControlledAccordions(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [data, setData] = React.useState([])
   const [check, setCheck] = React.useState([])
-  
+
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const changeData = () => {
+    props.onChange({
+      ruta: {
+        category: props.posicion.category,
+        subCategory: props.posicion.subCategory
+      },
+      data
+    })
+  }
+
   const editData = (e) => {
     let list = data
 
-    list[e.indice] = e.value
+    list[e.indice]["name"] = e.value
 
     setData(list)
     renderChecks()
+    changeData()
   }
 
   const removeData = (e) => {
@@ -50,13 +61,22 @@ export default function ControlledAccordions(props) {
     setData(list)
 
     renderChecks()
+    changeData()
+  }
+
+  const checked = (e) => {
+    let list = data
+
+    list[e.indice]["checked"] = e.check;
+    renderChecks()
+    changeData()
   }
 
   const renderChecks = () => {
     const checks = []
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
-      checks.push(<Check label={element} indice={i} remove={removeData} edit={editData}/>)
+      checks.push(<Check label={element} indice={i} remove={removeData} edit={editData} checked={checked} key={i} />)
     }
 
     setCheck(checks)
@@ -65,15 +85,16 @@ export default function ControlledAccordions(props) {
   const Submit = (e) => {
     const d = data;
 
-    d.push(e)
+    d.push({ checked: false, name: e })
     setData(data)
     renderChecks()
+    changeData()
   }
 
   React.useEffect(() => {
     setData(props.data.data)
     renderChecks()
-  }, [])
+  }, [data])
 
   return (
     <Accordion expanded={expanded === `panel${props.key}`} onChange={handleChange(`panel${props.key}`)}>
@@ -85,7 +106,7 @@ export default function ControlledAccordions(props) {
         <Typography className={classes.heading}>{props.data.name}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Formulary onSubmit={Submit}/>
+        <Formulary onSubmit={Submit} />
         <div className="list">
           <h2>Lista</h2>
           {check}

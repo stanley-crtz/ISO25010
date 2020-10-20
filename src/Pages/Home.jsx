@@ -53,7 +53,7 @@ const Home = () => {
                 firebase.auth().currentUser &&
                 (
                     <>
-                        <CHeader user={firebase.auth().currentUser.providerData[0]} signOut={signOut} />
+                        <CHeader user={firebase.auth().currentUser.providerData[0]} signOut={signOut} proyect={false} title="ISO25010"/>
 
                         <div className="main">
                             <Card />

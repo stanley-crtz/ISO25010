@@ -7,6 +7,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import BallotIcon from '@material-ui/icons/Ballot';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Divider from '@material-ui/core/Divider';
 import NewProyect from '../NewProyect'
 import { Redirect } from 'react-router-dom';
 
@@ -66,6 +68,20 @@ const NestedList = (props) => {
           </ListItemIcon>
           <ListItemText primary="Nuevo Proyecto" />
         </ListItem>
+
+        {
+          props.proyect &&
+          <>
+            <Divider />
+
+            <ListItem button={true} onClick={() => closeMenu(true)}>
+              <ListItemIcon>
+                <DeleteIcon />
+              </ListItemIcon>
+              <ListItemText primary="Eliminar Proyecto" />
+            </ListItem>
+          </>
+        }
       </List>
       <NewProyect open={openModal} close={() => setOpenModal(false)} />
     </>

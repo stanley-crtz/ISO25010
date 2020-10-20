@@ -63,11 +63,20 @@ export default function VerticalTabs(props) {
         setValue(newValue);
     };
 
+    const changeData= (e) => {
+        let lista = props.data.Calidad
+
+        lista[e.ruta.category]["SubCat"][e.ruta.subCategory]['data'] = e.data
+
+        props.onChange(lista)
+    }
+
     const Categorys = props.data.Calidad
     const ListaTabs = []
     const ListaPanel = []
     let SubCategorys = []
     let cont = 0
+
     for (const key in Categorys) {
 
         ListaTabs.push(<Tab label={Categorys[key]['name']} {...a11yProps(cont)} key={cont} />)
@@ -78,8 +87,12 @@ export default function VerticalTabs(props) {
                 data={Categorys[key]['SubCat'][keySubCat]} 
                 Total={Categorys[key]['Porcentaje']} 
                 Porcentaje={Categorys[key]['PorcentajeSubCat']} 
-                cant={Categorys[key]['cant']}
+                posicion={{
+                    category: key,
+                    subCategory: keySubCat
+                }}
                 key={cont}
+                onChange={changeData}
             />)
         }
 

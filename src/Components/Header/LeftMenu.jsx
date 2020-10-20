@@ -3,8 +3,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ListMenu from './ListMenu'
+import { PinDropSharp } from "@material-ui/icons";
 
-const LeftMenu = () => {
+const LeftMenu = (props) => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -44,7 +45,7 @@ const LeftMenu = () => {
                 onClose={handleClose}
             >
                 <div>
-                    <ListMenu hide={handleClose}/>
+                    <ListMenu hide={handleClose} proyect={props.proyect}/>
                 </div>
             </Menu>
         </Fragment>

@@ -32,10 +32,10 @@ const Header = (props) => {
             <AppBar position="static">
                 <Toolbar>
                     <div>
-                        <LeftMenu/>
+                        <LeftMenu proyect={props.proyect}/>
                     </div>
                     <Typography variant="h6" className={classes.title}>
-                        ISO25010
+                        {props.title}
                     </Typography>
                     <div>
                         <RigthMenu user={props.user} signOut={signOut}/>
