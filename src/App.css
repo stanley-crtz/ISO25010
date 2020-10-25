@@ -2,6 +2,68 @@
   text-align: center;
 }
 
+.login-box {
+  width: 320px;
+  height: 420px;
+  background: rgb(221, 228, 228);
+  color: rgb(14, 14, 14);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+}
+
+.login-box .avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 60%;
+  position: absolute;
+  top: -80px;
+  left: calc(45% - 50px);
+}
+
+.login-box h1{
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.login h3{
+  text-align: center;
+}
+
+
+.login button {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.login button{
+  width: 100%;
+  margin: 15px 0px;
+  padding: 10px;
+  box-shadow: 0 0 5px 0 rgba(211, 9, 9, 0.2);
+  cursor: pointer;
+  position: relative;
+}
+.login .fb{
+  background: #3b5999;
+  border-style: none;
+  color: #fff;
+}
+.login .tw{
+  background: #55acef;
+  border-style: none;
+  color: #fff;
+}
+.login .correo{
+  background: #33d4ce;
+  border-style: none;
+  color: #fff;
+}
+
 .container-user {
   width: 300px;
   display: flex;
@@ -144,20 +206,21 @@ hr {
   justify-items: center;
 }
 
-.check:hover{
+.check:hover {
   background-color: rgb(0, 0, 0, 0.2);
 }
 
-.check > .name{
+.check>.name {
   width: 80%;
   text-align: left;
 }
 
-.check > .name > label:hover, .check > .name > input:hover{
+.check>.name>label:hover,
+.check>.name>input:hover {
   cursor: pointer;
 }
 
-.check > .icon{
+.check>.icon {
   margin: 2px;
   display: flex;
   flex-direction: column;
@@ -171,19 +234,129 @@ hr {
   min-height: 30px;
 }
 
-.check > .icon:hover{
+.check>.icon:hover {
   cursor: pointer;
 }
 
-.check > .edit{
+.check>.edit {
   background-color: yellow;
 }
 
-.check > .delete{
+.check>.delete {
   background-color: red;
 }
 
-.button{
+.button {
   width: 100%;
   margin-top: 10px;
+}
+
+.left {
+  max-width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: left;
+}
+
+.resultCard {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.resultCard>.Header {
+  padding: 10px;
+  background-color: rgb(0, 132, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultCard>.Header>.icon:hover{
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0, 0.2);
+}
+
+.resultCard>.Body{
+  padding-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.resultCard>.Footer{
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: end;
+  justify-content: right;
+}
+
+.resultCard>.Footer>.total{
+  padding: 10px;
+  text-align: right;
+  width: 100%;
+  background-color: rgb(0, 132, 255);
+}
+
+.subCat{
+  display: flex;
+}
+
+.swal2-container{
+  z-index: 2000 !important;
+}
+
+.margin{
+  margin-top: 20px;
+}
+
+.resultados{
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid #000;
+}
+
+.APROBADO {
+  padding: 10px;
+  margin: 10px;
+  text-align: left;
+}
+
+.REPROBADO {
+  padding: 10px;
+  margin: 10px;
+  text-align: left;
+}
+
+.APROBADO > label {
+  background-color: rgb(53, 247, 53);
+  padding: 10px;
+  margin: 10px
+}
+
+.REPROBADO > label {
+  background-color: red;
+  padding: 10px;
+  margin: 10px
+}
+
+.cuadroResult{
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.greend {
+  background-color: rgb(53, 247, 53);
+}
+
+.red{
+  background-color: red;
+  color: white !important;
 }

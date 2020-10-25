@@ -9,6 +9,7 @@ import SaveIcon from '@material-ui/icons/Save';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Peticiones from '../Firebase/Peticiones';
 import { Redirect } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const useStylesModal = makeStyles((theme) => ({
     modal: {
@@ -52,6 +53,13 @@ const NewProyect = (props) => {
         const Suma = Adecuacion + Eficiencia + Compatibilidad + Usabilidad + Fiabilidad + Seguridad + Mantenibilidad + Portabilidad
 
         if (Suma === 100) {
+            Swal.fire({
+                title: 'Creando Proyecto...',
+                allowOutsideClick: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                },
+            });
             const Data = {
                 Titulo,
                 Calidad: {
@@ -247,6 +255,7 @@ const NewProyect = (props) => {
             }
             
             await Peticiones.addOrEditProyect(Data);
+            Swal.close()
             setRedirect(true)
         }
         else {

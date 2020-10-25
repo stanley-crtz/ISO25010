@@ -6,10 +6,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import BallotIcon from '@material-ui/icons/Ballot';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Divider from '@material-ui/core/Divider';
-import NewProyect from '../NewProyect'
+import SaveIcon from '@material-ui/icons/Save';
 import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,18 +24,22 @@ const useStyles = makeStyles((theme) => ({
 
 const NestedList = (props) => {
   const classes = useStyles();
-  const [openModal, setOpenModal] = React.useState(false);
   const [redirect, setRedirect] = React.useState(false)
 
   const closeMenu = (change) => {
 
     if (change) {
       setRedirect(true)
+      props.hide('')
     }
     else {
-      setOpenModal(true)
+      // setOpenModal(true)
     }
-    props.hide('')
+  }
+
+  const saveData = (e) => {
+    props.save(e)
+    closeMenu()
   }
 
   return (
@@ -62,19 +65,18 @@ const NestedList = (props) => {
           <ListItemText primary="Todos los proyectos" />
         </ListItem>
 
-        <ListItem button={true} onClick={() => closeMenu(false)}>
-          <ListItemIcon>
-            <AddCircleOutlineIcon />
-          </ListItemIcon>
-          <ListItemText primary="Nuevo Proyecto" />
-        </ListItem>
-
         {
           props.proyect &&
           <>
             <Divider />
 
-            <ListItem button={true} onClick={() => closeMenu(true)}>
+            <ListItem button={true} onClick={() => saveData(true)}>
+              <ListItemIcon>
+                <SaveIcon />
+              </ListItemIcon>
+              <ListItemText primary="Guardar Cambios" />
+            </ListItem>
+            <ListItem button={true} onClick={() => saveData(false)}>
               <ListItemIcon>
                 <DeleteIcon />
               </ListItemIcon>
@@ -83,7 +85,6 @@ const NestedList = (props) => {
           </>
         }
       </List>
-      <NewProyect open={openModal} close={() => setOpenModal(false)} />
     </>
   );
 }

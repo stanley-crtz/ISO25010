@@ -26,13 +26,17 @@ const Header = (props) => {
         props.signOut('')
     }
 
+    const save_Or_Delete = (e) => {
+        props.save(e)
+    }
+
     return (
         <div className={classes.root}>
 
             <AppBar position="static">
                 <Toolbar>
                     <div>
-                        <LeftMenu proyect={props.proyect}/>
+                        <LeftMenu proyect={props.proyect} save={save_Or_Delete}/>
                     </div>
                     <Typography variant="h6" className={classes.title}>
                         {props.title}

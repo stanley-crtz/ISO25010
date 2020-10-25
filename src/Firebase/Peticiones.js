@@ -11,6 +11,10 @@ class Peticiones {
         await db.collection(`${Acceso.getAccess()}-Proyectos`).doc(data.Titulo).set(data)
     }
 
+    deleteProyect = async (data) => {
+        await db.collection(`${Acceso.getAccess()}-Proyectos`).doc(data.Titulo).delete()
+    }
+
     getProyects = async () => {
         const querySnapshot = await db.collection(`${Acceso.getAccess()}-Proyectos`).get();
 

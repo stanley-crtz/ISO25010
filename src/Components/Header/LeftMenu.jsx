@@ -18,6 +18,10 @@ const LeftMenu = (props) => {
         setAnchorEl(null);
     };
 
+    const save = (e) => {
+        props.save(e)
+    }
+
     return(
         <Fragment>
             <IconButton
@@ -45,7 +49,7 @@ const LeftMenu = (props) => {
                 onClose={handleClose}
             >
                 <div>
-                    <ListMenu hide={handleClose} proyect={props.proyect}/>
+                    <ListMenu hide={handleClose} proyect={props.proyect} save={save}/>
                 </div>
             </Menu>
         </Fragment>

@@ -63,7 +63,7 @@ export default function VerticalTabs(props) {
         setValue(newValue);
     };
 
-    const changeData= (e) => {
+    const changeData = (e) => {
         let lista = props.data.Calidad
 
         lista[e.ruta.category]["SubCat"][e.ruta.subCategory]['data'] = e.data
@@ -79,21 +79,20 @@ export default function VerticalTabs(props) {
 
     for (const key in Categorys) {
 
-        ListaTabs.push(<Tab label={Categorys[key]['name']} {...a11yProps(cont)} key={cont} />)
+        ListaTabs.push(<Tab label={Categorys[key]['name']} {...a11yProps(cont)} key={cont + key} />)
 
         for (const keySubCat in Categorys[key]['SubCat']) {
             SubCategorys.push(
-            <Opciones 
-                data={Categorys[key]['SubCat'][keySubCat]} 
-                Total={Categorys[key]['Porcentaje']} 
-                Porcentaje={Categorys[key]['PorcentajeSubCat']} 
-                posicion={{
-                    category: key,
-                    subCategory: keySubCat
-                }}
-                key={cont}
-                onChange={changeData}
-            />)
+                <Opciones
+                    data={Categorys[key]['SubCat'][keySubCat]}
+                    Total={Categorys[key]['Porcentaje']}
+                    Porcentaje={Categorys[key]['PorcentajeSubCat']}
+                    posicion={{
+                        category: key,
+                        subCategory: keySubCat
+                    }}
+                    onChange={changeData}
+                />)
         }
 
         ListaPanel.push(
@@ -110,20 +109,22 @@ export default function VerticalTabs(props) {
     }
 
     return (
-        <div className={classes.root}>
-            <Tabs
-                orientation="vertical"
-                variant="scrollable"
-                value={value}
-                onChange={handleChange}
-                aria-label="Vertical tabs example"
-                className={classes.tabs}
-            >
-                {/* Nombres de los tabs */}
-                {ListaTabs}
-            </Tabs>
-            {/* Estos se refieren al panel que se encuentra con el tab y el index es el identificador del Tab */}
-            {ListaPanel}
-        </div>
+        <>
+            <div className={classes.root}>
+                <Tabs
+                    orientation="vertical"
+                    variant="scrollable"
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="Vertical tabs example"
+                    className={classes.tabs}
+                >
+                    {/* Nombres de los tabs */}
+                    {ListaTabs}
+                </Tabs>
+                {/* Estos se refieren al panel que se encuentra con el tab y el index es el identificador del Tab */}
+                {ListaPanel}
+            </div>
+        </>
     );
 }
