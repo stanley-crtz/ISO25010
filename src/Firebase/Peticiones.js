@@ -1,5 +1,4 @@
 import {db} from './Conection'
-import Acceso from './Acceso'
 
 class Peticiones {
 
@@ -8,15 +7,15 @@ class Peticiones {
     }
 
     addOrEditProyect = async (data) => {
-        await db.collection(`${Acceso.getAccess()}-Proyectos`).doc(data.Titulo).set(data)
+        await db.collection(`Proyectos`).doc(data.Titulo).set(data)
     }
 
     deleteProyect = async (data) => {
-        await db.collection(`${Acceso.getAccess()}-Proyectos`).doc(data.Titulo).delete()
+        await db.collection(`Proyectos`).doc(data.Titulo).delete()
     }
 
     getProyects = async () => {
-        const querySnapshot = await db.collection(`${Acceso.getAccess()}-Proyectos`).get();
+        const querySnapshot = await db.collection(`Proyectos`).get();
 
         return querySnapshot;
         // querySnapshot.forEach(element => {
@@ -27,7 +26,7 @@ class Peticiones {
     getProyect = async (name) => {
         let data;
         data = {}
-        const querySnapshot = await db.collection(`${Acceso.getAccess()}-Proyectos`).where("Titulo", "==", name).get();
+        const querySnapshot = await db.collection(`Proyectos`).where("Titulo", "==", name).get();
 
         querySnapshot.forEach(element => {
             data = element.data()

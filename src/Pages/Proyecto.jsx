@@ -42,6 +42,7 @@ const Proyecto = (props) => {
     }
 
     const verificacionColor = (x, y) => {
+      console.log(total)
         return total >= x && total <= y ? true : false
     }
 
